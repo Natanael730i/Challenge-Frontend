@@ -1,0 +1,87 @@
+
+<mat-card>
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="teste" class="classe-filha">
+    <mat-form-field>
+      <mat-label>Valor Boleto</mat-label>
+      <input name="valor" matInput ngModel #first = "ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>ID Pessoa</mat-label>
+      <input name="pessoa" matInput ngModel>
+    </mat-form-field>
+    <button onclick="window.location.reload()"  mat-raised-button color="primary">Salvar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-content>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="pessoa">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.pessoa}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="dataVencimento">
+        <th mat-header-cell *matHeaderCellDef> Vencimento </th>
+        <td mat-cell *matCellDef="let element"> {{element.dataVencimento | date}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef> ações </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-template *ngIf="element.status =='CANCELADO' || element.status == 'LIQUIDADO'; else elseBlock">
+            <div class="example-button-container">
+              <button onclick="window.location.reload()" (click)="cancelar(element)" disabled mat-mini-fab>
+                <img src="assets/icons/cancelar.png" alt="Cancelar Boleto">
+              </button>
+              <button onclick="window.location.reload()"  (click)="pagar(element)" disabled mat-mini-fab>
+                <img src="assets/icons/pagar.png" alt="Pagar Boleto">
+              </button>
+            </div>
+          </ng-template>
+          <ng-template #elseBlock>
+            <div class="example-button-container">
+              <button (click)="cancelar(element)" mat-mini-fab>
+                <img src="assets/icons/cancelar.png" alt="Cancelar Boleto">
+              </button>
+              <button (click)="pagar(element)" mat-mini-fab>
+                <img src="assets/icons/pagar.png" alt="Pagar Boleto">
+              </button>
+            </div>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="detalhes">
+        <th mat-header-cell *matHeaderCellDef> Detalhes </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button (click)="openDialog(element)">Exibir Detalhes</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+  </mat-card-content>
+</mat-card>

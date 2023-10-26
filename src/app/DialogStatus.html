@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Boletos do Cliente</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let escolhas of escolhas" [value]="escolhas">
+        {{escolhas.statusview}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="openDialog()" mat-raised-button color="primary"><img  src="assets/icons/list-boletos.png"></button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Open</button>
+</mat-dialog-actions>
