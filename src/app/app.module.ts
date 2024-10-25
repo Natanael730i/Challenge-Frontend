@@ -18,11 +18,13 @@ import {RouterTestingModule} from "@angular/router/testing";
 import { AppRoutingModule } from './app-routing.module';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoletoComponent
+    BoletoComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,

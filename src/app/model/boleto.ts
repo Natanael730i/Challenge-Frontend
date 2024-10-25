@@ -1,7 +1,15 @@
+import {Pessoa} from "./pessoa";
+import {Status} from "./enums/status";
+import {Vencimentos} from "./enums/vencimentos";
+
 export interface Boleto {
-  id:number;
-  valor:number;
-  pessoa:number;
+
+  id : string;
+  valor : number;
+  pessoa : Pessoa;
+  vencimentos : Vencimentos;
   dataVencimento: Date;
-  status:number; // 0 - PENDENTE 1 - LIQUIDADO 2 - CANCELADO
+  status  : Status;
+  createdAt : Date;
+
 }

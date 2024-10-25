@@ -25,7 +25,7 @@ export class PessoaService {
     return this.httpClient.delete<any>(this.API + 'delete/' + id);
   }
 
-  alter(id:number, pessoa: Pessoa) {
+  alter(id:string, pessoa: Pessoa) {
     return this.httpClient.put<any>(this.API + 'alter/' + id, pessoa);
   }
 }

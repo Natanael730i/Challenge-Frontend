@@ -1,5 +1,8 @@
 export interface Pessoa {
-  id: number;
-  nome: string;
-  valorLimiteBoletos:number;
+
+  id : string;
+  nome : string;
+  valorLimiteBoletos : number;
+  dataCriacao : Date;
+
 }

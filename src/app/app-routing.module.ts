@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 
 const routes:Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'boleto'},
+  {path: '', pathMatch: 'full', redirectTo: 'index'},
   {
-    path: 'boleto',
-    loadChildren: () => import('./boleto/boleto.module').then(m=> m.BoletoModule)
+    path: 'index',
+    loadChildren: () => import('./index/index.module').then(m=> m.IndexModule)
   }
 ]
 
